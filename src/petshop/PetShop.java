@@ -166,6 +166,7 @@ public class PetShop extends javax.swing.JFrame {
         } else { // alterar
             selecionado.setNome(nome);
             selecionado.setTipo(tipo);
+            sistema.atualizarAnimal(selecionado);
         }
     }//GEN-LAST:event_botaoSalvarActionPerformed
 

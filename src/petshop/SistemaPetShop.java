@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class SistemaPetShop {
     private ArrayList<Animal> animais;
+    private Persistencia persistencia;
     
     public SistemaPetShop() {
-        animais = new ArrayList<>();
+        persistencia = new Persistencia();
+        animais = persistencia.carregar();
     }
     
     public void adicionarAnimal(Animal animal) throws Exception {
@@ -19,10 +21,16 @@ public class SistemaPetShop {
         }
         
         animais.add(animal);
+        persistencia.gravar(animais);
+    }
+    
+    public void atualizarAnimal(Animal animal) {
+        persistencia.gravar(animais);
     }
     
     public void removerAnimal(Animal animal) {
         animais.remove(animal);
+        persistencia.gravar(animais);
     }
     
     public Animal getAnimalPorIndice(int indice) {
